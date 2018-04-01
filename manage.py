@@ -11,13 +11,9 @@ manager = Manager(app)
 # 设置迁移文件对象
 manager.add_command('db', MigrateCommand)
 Migrate(app, db)
-# 设置redis数据库的对象
 
-
-# 设置路由和视图函数
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return 'hello world'
 
 if __name__ == '__main__':
+    print app.url_map
+    # manager.run()
     manager.run()
