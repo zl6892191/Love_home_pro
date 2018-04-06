@@ -1,6 +1,6 @@
 # coding=utf-8
 import redis
-
+import logging
 
 class Config(object):
 
@@ -14,17 +14,17 @@ class Config(object):
     SESSION_TYPE = "redis"  # 设置session保存模式
     SESSION_USE_SIGNER = True  # 使用 redis 的实例
     PERMANENT_SESSION_LIFETIME = 3600 * 24  # session 的有效期，单位是秒
-    redis_store = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT)
     SESSION_REDIS = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT)
 
 
 # 开发模式配置
 class DevelopementConfig(Config):
     DEBUG = True  # 开启BUG模式
+    LOGGING_LEVEL = logging.DEBUG
 
 # 生产模式配置
 class ProductionConfig(Config):
-    pass
+    LOGGING_LEVEL = logging.WARNING
 
 
 config = {

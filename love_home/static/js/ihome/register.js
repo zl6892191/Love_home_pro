@@ -25,7 +25,7 @@ function generateImageCode() {
     // last_uuid = uuid;
 
     // 2.拼接请求地址 ： url = /api/1.0/image_code?uuid=uuid
-    var url = '/api/1.0/image_code?uuid=' + uuid + '&last_uuid=' + last_uuid;
+    var url = '/api/1.0/image_code?uuid=' + uuid +'&after_id='+last_uuid;
 
     // 3.将url赋值给<img>标签的src属性
     // $('.image-code>img') : 表示从image-code标识的标签中直接找到子集<img>
@@ -54,8 +54,48 @@ function sendSMSCode() {
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
     }
-
+    var params = {
+        mobile : mobile,
+        imagecode: imageCode,
+        uuid : uuid
+    };
     // TODO: 通过ajax方式向后端接口发送请求，让后端发送短信验证码
+    $.ajax({
+        url: 'api/1.0/smscode',
+        type: 'post',
+        data:JSON.stringify(params),
+        contentType:'application/json',
+        headers:{'X-CSRFToken':getCookie('csrf_token')},
+        success:function (data) {
+            if(data.errno == '0'){
+                var num = 30;
+                var t = setInterval(function ()  {
+                    if (num == 0) {
+                        // 倒计时完成,清除定时器
+                        clearInterval(t);
+                        // 重置内容
+                        $(".phonecode-a").html('获取验证码');
+                        // 重新添加点击事件
+                        $(".phonecode-a").attr("onclick", "sendSMSCode();");
+                    } else {
+                        // 正在倒计时，显示秒数
+                        $(".phonecode-a").html(num + '秒');
+                    }
+
+                    num = num - 1;
+                }, 1000);
+            } else {
+                // 发送短信验证码失败
+                // 重新添加点击事件
+                $(".phonecode-a").attr("onclick", "sendSMSCode();");
+                // 重新生成验证码
+                generateImageCode();
+                // 弹出错误消息
+                alert(response.errmsg);
+            }
+
+        }
+    });
 }
 
 $(document).ready(function() {
@@ -78,4 +118,60 @@ $(document).ready(function() {
     });
 
     // TODO: 注册的提交(判断参数是否为空)
-})
+    $('.form-register').submit(function (event) {
+        // 阻止form表单自己的提交时间
+        event.preventDefault();
+
+        // 读取要发送给服务器的变量：手机号，短信验证码，密码，确认密码
+        var mobile = $('#mobile').val();
+        var phonecode = $('#phonecode').val();
+        var password = $('#password').val();
+        var password2 = $('#password2').val();
+
+        // 校验变量是否存在
+        if (!mobile) {
+            $("#mobile-err span").html("请填写正确的手机号！");
+            $("#mobile-err").show();
+            return;
+        }
+        if (!phonecode) {
+            $('#phone-code-err span').html('请填写短信验证码');
+            $('#phone-code-err').show();
+            return;
+        }
+        if (!password) {
+            $("#password-err span").html("请填写密码!");
+            $("#password-err").show();
+            return;
+        }
+        if (password != password2) {
+            $("#password2-err span").html("两次密码不一致!");
+            $("#password2-err").show();
+            return;
+        }
+
+        // 准备参宿
+        var params = {
+            'mobile':mobile,
+            'sms_code':phonecode,
+            'password':password
+        };
+
+        // 发送注册请求给服务器
+        $.ajax({
+            url:'/api/1.0/register',
+            type:'post',
+            data:JSON.stringify(params),
+            contentType:'application/json',
+            headers:{'X-CSRFToken':getCookie('csrf_token')},
+            success:function (response) {
+                if (response.errno == '0') {
+                    // 如果注册成功，进入到主页
+                    location.href = '/'
+                } else {
+                    alert(response.errmsg);
+                }
+            }
+        });
+    });
+});

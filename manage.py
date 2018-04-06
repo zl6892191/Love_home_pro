@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from flask_migrate import Migrate,MigrateCommand
 from flask_script import Manager
-from love_home import create_app, db
+from love_home import create_app, db,modles
 
 
 # 创建 app，并传入配置模式：development / production
@@ -16,4 +16,5 @@ Migrate(app, db)
 if __name__ == '__main__':
     print app.url_map
     # manager.run()
-    manager.run()
+    # manager.run(debug = True)
+    app.run(debug = True)
