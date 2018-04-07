@@ -38,6 +38,26 @@ class User(BaseModel, db.Model):
         # value 是外界传入的密码的明文数据
         self.password_hash = generate_password_hash(value)
 
+    def to_dict(self):
+        response_data = {
+            'avatar_url':self.avatar_url,
+            'name':self.name,
+            'mobile':self.mobile,
+            'user_id':self.id
+        }
+        return response_data
+
+    # def check_password(self,value):
+    #     password = generate_password_hash(value)
+    #     print password
+    #     if password == self.password_hash:
+    #         return True
+    #     else:
+    #         return False
+    def check_password(self,value):
+        return check_password_hash(self.password_hash,value)
+
+
 
 class Area(BaseModel, db.Model):
     """城区"""

@@ -36,3 +36,85 @@ DEBUG verify.py:76 短信验证码为：250692
 WARNING _internal.py:88  * Debugger is active!
 DEBUG verify.py:76 短信验证码为：829875
 DEBUG verify.py:76 短信验证码为：326120
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+ERROR profile.py:29 'BaseQuery' object has no attribute 'frist'
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+ERROR profile.py:66 'BaseQuery' object has no attribute 'frist'
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+ERROR profile.py:96 (_mysql_exceptions.OperationalError) (1048, "Column 'name' cannot be null") [SQL: u'UPDATE ih_user_profile SET update_time=%s, name=%s WHERE ih_user_profile.id = %s'] [parameters: (datetime.datetime(2018, 4, 7, 17, 19, 12, 905595), None, 1L)] (Background on this error at: http://sqlalche.me/e/e3q8)
+WARNING _internal.py:88  * Debugger is active!
+ERROR profile.py:96 (_mysql_exceptions.OperationalError) (1048, "Column 'name' cannot be null") [SQL: u'UPDATE ih_user_profile SET update_time=%s, name=%s WHERE ih_user_profile.id = %s'] [parameters: (datetime.datetime(2018, 4, 7, 17, 27, 53, 382219), None, 1L)] (Background on this error at: http://sqlalche.me/e/e3q8)
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+ERROR profile.py:29 get() got an unexpected keyword argument 'id'
+ERROR profile.py:29 get() got an unexpected keyword argument 'id'
+WARNING _internal.py:88  * Debugger is active!
+ERROR profile.py:30 get() got an unexpected keyword argument 'id'
+WARNING _internal.py:88  * Debugger is active!
+ERROR profile.py:31 get() got an unexpected keyword argument 'id'
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
+ERROR passport.py:34 get() got an unexpected keyword argument 'id'
+WARNING _internal.py:88  * Debugger is active!
+ERROR passport.py:34 filter() got an unexpected keyword argument 'mobile'
+WARNING _internal.py:88  * Debugger is active!
+WARNING _internal.py:88  * Debugger is active!
