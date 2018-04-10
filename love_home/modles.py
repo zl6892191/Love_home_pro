@@ -47,6 +47,14 @@ class User(BaseModel, db.Model):
         }
         return response_data
 
+    def auth_to_dict(self):
+        """封装用户认证展示的数据"""
+        response_data = {
+            'real_name': self.real_name,
+            'id_card': self.id_card
+        }
+        return response_data
+
     # def check_password(self,value):
     #     password = generate_password_hash(value)
     #     print password
@@ -75,6 +83,7 @@ class Area(BaseModel, db.Model):
             "aname": self.name
         }
         return area_dict
+
 
 
 # 房屋设施表，建立房屋与设施的多对多关系

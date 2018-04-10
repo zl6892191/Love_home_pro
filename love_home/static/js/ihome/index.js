@@ -71,15 +71,26 @@ $(document).ready(function(){
         paginationClickable: true
     });
 
-    // TODO: 获取城区信息,获取完毕之后需要设置城区按钮点击之后相关操作
+       // TODO: 获取城区信息,获取完毕之后需要设置城区按钮点击之后相关操作
+    $.get('/api/1.0/areas', function (response) {
+        if (response.errno == '0') {
 
-    // TODO: 城区按钮点击之后相关操作
-    $(".area-list a").click(function(e){
-        $("#area-btn").html($(this).html());
-        $(".search-btn").attr("area-id", $(this).attr("area-id"));
-        $(".search-btn").attr("area-name", $(this).html());
-        $("#area-modal").modal("hide");
+            var html = template('area-list-tmpl', {'areas':response.data});
+            $('.area-list').html(html);
+
+            // TODO: 城区按钮点击之后相关操作
+            $(".area-list a").click(function(e){
+                $("#area-btn").html($(this).html());
+                $(".search-btn").attr("area-id", $(this).attr("area-id"));
+                $(".search-btn").attr("area-name", $(this).html());
+                $("#area-modal").modal("hide");
+            });
+
+        } else {
+            alert(response.errmsg);
+        }
     });
+
 
     $('.modal').on('show.bs.modal', centerModals);      //当模态框出现的时候
     $(window).on('resize', centerModals);               //当窗口大小变化的时候
@@ -93,4 +104,4 @@ $(document).ready(function(){
         var date = $(this).datepicker("getFormattedDate");
         $("#start-date-input").val(date);
     });
-})
+});
